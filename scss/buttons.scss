@@ -1,0 +1,57 @@
+@mixin button-bg($bg) {
+    
+    background: $bg;
+    border: 1px solid $bg;
+    color: #fff;
+    &:not([disabled]):hover {
+        border-color: $bg;
+        background: darken($bg, 8%);
+        transition: all 0.3s ease;
+    }
+}
+
+@mixin button-border($color) {
+    
+    border: 1px solid $color;
+    color: $color;
+    &:not([disabled]):hover {
+        border-color: darken($color, 8%);
+        color: darken($color, 8%);
+        transition: all 0.3s ease;
+    }
+}
+
+button {
+
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    border: none;
+    outline: none;
+    font-size: inherit;
+    padding: 10px 25px;    
+
+    & + & {
+        margin-left: 12px;
+    }
+
+    &.btn-pink {
+        @include button-bg(#e73c7e);
+    }
+    
+    &.btn-white {
+        @include button-border(#4b4b4b);
+        background-color: #fff;
+    }
+
+    &:not(:disabled) {
+        cursor: pointer;
+    }
+
+    &:disabled {
+        background-color: #ececec;
+        border-color: #ececec;
+        color: #6d6d6d;
+    }
+}
+
